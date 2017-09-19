@@ -26,8 +26,10 @@
       <div class="container">
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><h1><a href="">HARAMBEE ADMIN</a> </h1></li>
-           
+          <li class="active"><a href="home.php">Home</a></li>
+          <li class="active"><a href="home.php">Display Records</a></li>
+          <li class="active"><a href="new.php">Add Record</a></li>
+          <li class="active"><a href="view-paginated.php">Pagination</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             
@@ -52,7 +54,7 @@
     	</div>
         
         <div class="row">
-        <div class="col-lg-12">
+        <div class="col-12">
 
         <?php
 
@@ -78,13 +80,13 @@ or die(mysql_error());
 
 // display data in table
 
+
+
 echo "<p><b>View All</b> | <a href='view-paginated.php?page=1'>View Paginated</a></p>";
 
+echo "<table width='100%' height='100%' class='table table-hover table-bordered' color='blue'>";
 
-
-echo "<table border='1' cellpadding='10' width='100%' height='100%' class='table'>";
-
-echo "<tr> <th height='100%'>ID</th> <th>First Name</th> <th>Last Name</th> <th>Date of Birth</th> <th>Gender</th> <th>Residential_Address</th> <th>Postal Address Address</th>
+echo "<tr> <th height='100%'>ID</th> <th>First Name</th> <th>Last Name</th> <th>Date of Birth</th> <th>Gender</th> <th>Residential_Address</th> <th width='100%'>Postal Address</th>
 
 <th>constituency</th> <th>income_source</th> <th>registered_by</th> <th>occupation</th> <th>Age</th> <th></th> <th></th></tr>";
 
@@ -98,22 +100,22 @@ echo "<tr height='100%'>";
 
 echo '<td>' . $row['id'] . '</td>';
 
-echo '<td>' . $row['firstname'] . '</td>';
+echo '<td width=100%;>' . $row['firstname'] . '</td>';
 
-echo '<td>' . $row['lastname'] . '</td>';
+echo '<td width=100%;>' . $row['lastname'] . '</td>';
 
-echo '<td>' . $row['dateOfBirth'] . '</td>';
+echo '<td width=100%;>' . $row['dateOfBirth'] . '</td>';
 
-echo '<td>' . $row['gender'] . '</td>';
+echo '<td width=100%;>' . $row['gender'] . '</td>';
 
-echo '<td>' . $row['residential_address'] . '</td>';
-echo '<td>' . $row['postal_address'] . '</td>';
+echo '<td width=100%;>' . $row['residential_address'] . '</td>';
+echo '<td width=100%;>' . $row['postal_address'] . '</td>';
 
-echo '<td>' . $row['constituency'] . '</td>';
-echo '<td>' . $row['income_source'] . '</td>';
+echo '<td width=100%;>' . $row['constituency'] . '</td>';
+echo '<td width=100%;>' . $row['income_source'] . '</td>';
 
-echo '<td>' . $row['registered_by'] . '</td>';
-echo '<td>' . $row['occupation'] . '</td>';
+echo '<td width=100%;>' . $row['registered_by'] . '</td>';
+echo '<td width=100%;>' . $row['occupation'] . '</td>';
 
 echo '<td>' . $row['age'] . '</td>';
 

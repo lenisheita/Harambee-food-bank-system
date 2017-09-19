@@ -26,8 +26,10 @@
       <div class="container">
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><h1><a href="">HARAMBEE ADMIN</a> </h1></li>
-           
+          <li class="active"><a href="home.php">Home</a></li>
+          <li class="active"><a href="home.php">Display Records</a></li>
+          <li class="active"><a href="new.php">Add Record</a></li>
+          <li class="active"><a href="view-paginated.php">Pagination</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             
@@ -160,7 +162,7 @@ echo "</p>";
 
 // display data in table
 
-echo "<table border='1' cellpadding='10'>";
+echo "<table class='table table-hover table-bordered'>";
 
 echo "<tr> <th>ID</th> <th>First Name</th> <th>Last Name</th> <th>Date of Birth</th> <th>Gender</th> <th>Residential_Address</th> <th>Postal Address Address</th>
 

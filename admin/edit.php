@@ -26,8 +26,10 @@ $userRow=mysql_fetch_array($res);
     <div class="container">
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li class="active"><h1><a href="">HARAMBEE ADMIN</a> </h1></li>
-         
+        <li class="active"><a href="home.php">Home</a></li>
+        <li class="active"><a href="home.php">Display Records</a></li>
+        <li class="active"><a href="new.php">Add Record</a></li>
+        <li class="active"><a href="view-paginated.php">Pagination</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           
@@ -53,8 +55,6 @@ $userRow=mysql_fetch_array($res);
       
       <div class="row">
       <div class="col-lg-12">
-
-
 <?php
 
 /*
@@ -64,8 +64,6 @@ EDIT.PHP
 Allows user to edit specific entry in database
 
 */
-
-
 
 // creates the edit record form
 
@@ -106,59 +104,73 @@ echo '<div style="padding:4px; border:1px solid red; color:red;">'.$error.'</div
 
 ?>
 
-
-
 <form action="" method="post">
 
 <input type="hidden" name="id" value="<?php echo $id; ?>"/>
 
 <div>
+<div class="row">
+<div class="col-lg-6">
+<strong>ID:</strong> <?php echo $id; ?>
+</div>
+<div class="col-lg-6">
+<input type="text" name="firstname" placeholder="First Name" class="form-control" value="<?php echo $firstname; ?>"/><br/>
+</div>
+</div>
 
-<p><strong>ID:</strong> <?php echo $id; ?></p>
+<div class="row">
+<div class="col-lg-6">
+<input type="text" name="lastname" placeholder="Last Name" class="form-control" value="<?php echo $lastname; ?>"/><br/>
+</div>
+<div class="col-lg-6">
+<input type="text" name="dateOfBirth" placeholder="Date of birth" class="form-control" value="<?php echo $dateOfBirth; ?>"/><br/>
+</div>
+</div>
 
-<strong>First Name: *</strong> <input type="text" name="firstname" class="form-control" value="<?php echo $firstname; ?>"/><br/>
+<div class="row">
+<div class="col-lg-6">
+<input type="text" name="gender" class="form-control" placeholder="Gender" value="<?php echo $gender; ?>"/><br/>
+</div>
+<div class="col-lg-6">
+<input type="text" class="form-control" placeholder="residential_address" name="residential_address" value="<?php echo $residential_address; ?>"/><br/>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-6">
+<input type="text" class="form-control" placeholder="Postall Address" name="postal_address" value="<?php echo $postal_address; ?>"/><br/>
+</div>
+<div class="col-lg-6">
+<input type="text" class="form-control" placeholder="constituency" name="constituency" value="<?php echo $constituency; ?>"/><br/>
+</div>
+</div>
 
-<strong>Last Name: *</strong> <input type="text" name="lastname" class="form-control" value="<?php echo $lastname; ?>"/><br/>
+<div class="row">
+<div class="col-lg-6">
+<input type="text" class="form-control" placeholder="Income_source" name="income_source" value="<?php echo $income_source; ?>"/><br/>
+</div>
 
-<strong>dateOfBirth: *</strong> <input type="text" name="dateOfBirth" class="form-control" value="<?php echo $dateOfBirth; ?>"/><br/>
+<div class="col-lg-6">
+<input type="text" class="form-control" placeholder="Registered By" name="registered_by" value="<?php echo $registered_by; ?>"/><br/>
+</div>
+</div>
 
-<strong>gender: *</strong> <input type="text" name="gender" class="form-control" value="<?php echo $gender; ?>"/><br/>
-
-<strong>residential_address: *</strong> <input type="text" class="form-control" name="residential_address" value="<?php echo $residential_address; ?>"/><br/>
-
-
-<strong>postal_address: *</strong> <input type="text" class="form-control" name="postal_address" value="<?php echo $postal_address; ?>"/><br/>
-
-<strong>constituency: *</strong> <input type="text" class="form-control" name="constituency" value="<?php echo $constituency; ?>"/><br/>
-<strong>income_source: *</strong> <input type="text" class="form-control" name="income_source" value="<?php echo $income_source; ?>"/><br/>
-
-<strong>registered_by: *</strong> <input type="text" class="form-control" name="registered_by" value="<?php echo $registered_by; ?>"/><br/>
-
-<strong>Occupation: *</strong> <input type="text" class="form-control" name="occupation" value="<?php echo $occupation; ?>"/><br/>
-
-<strong>Age: *</strong> <input type="text" class="form-control" name="age" value="<?php echo $age; ?>"/><br/>
-
-<p>* Required</p>
-
+<div class="row">
+<div class="col-lg-6">
+<input type="text" class="form-control" placeholder="Occupation" name="occupation" value="<?php echo $occupation; ?>"/><br/>
+</div>
+<div class="col-lg-6">
+<input type="text" class="form-control" placeholder="Age" name="age" value="<?php echo $age; ?>"/><br/>
+</div>
+</div>
 <input type="submit" class="btn btn-block btn-primary" name="submit" value="Submit">
 
 </div>
 
 </form>
 
-</body>
-
-</html>
-
 <?php
 
 }
-
-
-
-
-
-
 
 // connect to the database
 
@@ -205,27 +217,18 @@ $occupation = mysql_real_escape_string(htmlspecialchars($_POST['occupation']));
 
 $age = mysql_real_escape_string(htmlspecialchars($_POST['age']));
 
-
-
-
 // check that firstname/lastname fields are both filled in
 
 if ($firstname == '' || $lastname == '' | $dateOfBirth == ''| $gender == ''| $residential_address == ''| $postal_address == ''| $constituency == ''| $income_source == ''| $registered_by == '' | $occupation == '' | $age == '')
 
 {
-
 // generate error message
 
 $error = 'ERROR: Please fill in all required fields!';
-
-
-
 //error, display form
-
 renderForm( $id,$firstname,$lastname,$dateOfBirth,$gender,$residential_address, $postal_address,$constituency,	$income_source,	$registered_by,	$occupation,$age
 
 , $error);
-
 
 }
 
@@ -237,11 +240,7 @@ else
 
 mysql_query("UPDATE members SET firstname='$firstname', lastname='$lastname', dateOfBirth='$dateOfBirth', gender='$gender', residential_address='$residential_address', postal_address='$postal_address', constituency='$constituency', income_source='$income_source', registered_by='$registered_by', occupation='$occupation', age='$age' WHERE id='$id'")
 
-
-
 or die(mysql_error());
-
-
 
 // once saved, redirect back to the view page
 
@@ -270,7 +269,6 @@ else
 {
 
 
-
 // get the 'id' value from the URL (if it exists), making sure that it is valid (checing that it is numeric/larger than 0)
 
 if (isset($_GET['id']) && is_numeric($_GET['id']) && $_GET['id'] > 0)
@@ -286,8 +284,6 @@ $result = mysql_query("SELECT * FROM members WHERE id=$id")
 or die(mysql_error());
 
 $row = mysql_fetch_array($result);
-
-
 
 // check that the 'id' matches up with a row in the databse
 
@@ -321,11 +317,7 @@ $occupation = $row['occupation'];
 
 $occupation = $row['occupation'];
 
-
 $age = $row['age'];
-
-
-
 
 // show form
 

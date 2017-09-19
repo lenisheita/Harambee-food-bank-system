@@ -395,7 +395,7 @@ textarea {
 
 .row {
   width: 94%;
-  max-width: 1170px;
+  width: 100% !important;
   margin: 0 auto;
 }
 

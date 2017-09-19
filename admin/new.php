@@ -19,6 +19,7 @@ $userRow=mysql_fetch_array($res);
 <title>Welcome - <?php echo $userRow['userEmail']; ?></title>
 <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css"  />
 <link rel="stylesheet" href="style.css" type="text/css" />
+
 </head>
 <body>
 
@@ -26,7 +27,11 @@ $userRow=mysql_fetch_array($res);
     <div class="container">
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li class="active"><h1><a href="">HARAMBEE ADMIN</a> </h1></li>
+         
+        <li class="active"><a href="home.php">Home</a></li>
+        <li class="active"><a href="home.php">Display Records</a></li>
+        <li class="active"><a href="new.php">Add Record</a></li>
+        <li class="active"><a href="view-paginated.php">Pagination</a></li>
          
         </ul>
         <ul class="nav navbar-nav navbar-right">
@@ -97,45 +102,93 @@ function renderForm($firstname, $lastname,$email_address,$occupation,$age,$error
 if ($error != '')
 
 {
-
 echo '<div style="padding:4px; border:1px solid red; color:red;">'.$error.'</div>';
-
 }
 
 ?>
-
-
-
-
 <form action="" method="post">
 
 <div>
+<div class="row">
+<div class="col-lg-6">
+<input type="number" class="form-control" placeholder="User Id" name="id"/><br/>
+</div>
 
-<input type="text" class="form-control" placeholder="User Id" name="id"/><br/>
-
+<div class="col-lg-6">
 <input type="text" class="form-control" placeholder="First Name" name="firstname"/><br/>
 
+</div>
+</div>
+
+<div class="row">
+<div class="col-lg-6">
 <input type="text" class="form-control" placeholder="Last Name" name="lastname" /><br/>
+</div>
 
-<input type="text" placeholder="Date of birth" class="form-control" name="dateOfBirth" /><br/>
+<div class="col-lg-6">
+<input type="date" placeholder="Date of birth" class="form-control" name="dateOfBirth" /><br/>
 
-<input type="text" class="form-control" placeholder="Gender" name="gender" /><br/>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-6">
+<select  class="form-control" placeholder="Gender" name="gender" /><br/>
+  <option>Male</option>
+  <option>Female</option>
+</select><br>
+</div>
 
- <input type="text" class="form-control" placeholder="Residential Address" name="residential_address" /><br/>
+<div class="col-lg-6">
+<input type="text" class="form-control" placeholder="Residential Address" name="residential_address" /><br/>
+</div>
+</div>
+
+<div class="row">
+<div class="col-lg-6">
+<input type="text" class="form-control" placeholder="Postall Address" name="postal_address" /><br/>
+</div>
+
+<div class="col-lg-6">
+<select  class="form-control" placeholder="Consitituency" name="constituency" /><br/>
+  <option>Windhoek West</option>
+  <option>Windhoek North</option>
+  <option>Windhoek Central</option>
+  <option>Windhoek East</option>
+  <option>Katutura</option>
+</select><br>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-6">
+<input type="text" class="form-control" placeholder="Income source" name="income_source" /><br/>
+</div>
+
+<div class="col-lg-6">
+<input type="text" class="form-control" placeholder="Registered by" name="registered_by" /><br/>
+</div>
+</div>
+
+<div class="row">
+<div class="col-lg-6">
+<input type="text" class="form-control" placeholder="Occupation" name="occupation" /><br/>
+</div>
+
+<div class="col-lg-6">
+<input type="text" class="form-control" placeholder="Age" name="age"/><br/>
+</div>
+</div>
 
 
- <input type="text" class="form-control" placeholder="Postall Address" name="postal_address" /><br/>
 
- <input type="text" class="form-control" placeholder="Consitituency" name="constituency" /><br/>
- <input type="text" class="form-control" placeholder="Income source" name="income_source" /><br/>
 
- <input type="text" class="form-control" placeholder="Registered by" name="registered_by" /><br/>
 
- <input type="text" class="form-control" placeholder="Occupation" name="occupation" /><br/>
 
- <input type="text" class="form-control" placeholder="Age" name="age"/><br/>
 
-<p>* Required</p>
+
+
+
+
+
 
 <input type="submit" name="submit" class="btn btn-block btn-primary" value="Submit">
 
